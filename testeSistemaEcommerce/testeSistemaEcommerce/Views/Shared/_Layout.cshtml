@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Teste de Sistema Ecommerce</title>
+    <!-- Favicon-->
+    <link id="favicon" rel="shortcut icon" type="image/png" href="~/Img/Logo/Logo.png" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/Content/_Layout.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href='@Url.Action("Index", "Home")'>Teste de Sistema</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href='@Url.Action("Index", "Home")'>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href='@Url.Action("About", "Home")'>Sobre</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Carinho
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+
+                    <button class="btn btn-outline-dark" type="submit" style="margin-left: 25px;margin-right: 5px;" onclick=" $('#ModalCadastro').modal('show');">
+                        <i class="bi bi-person-badge me-1"></i>
+                        Cadastrar
+                    </button>
+
+                    <button class="btn btn-outline-dark" type="submit">
+                        Entrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <div class="col-lg-3" style="float:left;">
+                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_kz2ylhyq.json" background="transparent" width="300" height="300" speed="1" loop autoplay></lottie-player>
+                </div>
+                <div class="">
+                    <h1 class="display-4 fw-bolder">José Ecommerce</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Teste de desenvolvimento de Sistema do Sr José</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container body-content">
+        <br>
+        @RenderBody()
+        <hr />
+    </div>
+    <!-- Modals -->
+    <div id="ModalCadastro" class="modal fade" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-image: linear-gradient(#212529, #212529);">
+                    <img src="~/Img/Logo/Logo.png" width="15%" height="15%" />
+                    <h4 class="modal-title text-white-50">Cadastro</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div id="formularioUauario">
+                        <div class="col-md-6 form-group" style="width:100%;">
+                            <span><label class="text1">Nome</label>  </span>
+                            <input type="text" class="form-control" name="Nome" id="Nome">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text1">Tipo de Usuario</label>
+                                    <select errvalidacao="Tipo Pessoa" class="form-control" name="TipoPessoa" id="TipoPessoa" classe="TipoPessoa"><option value="0">Pessoa Fisica</option><option value="1">Pessoa Juridico</option></select>
+                                </div>
+                                <div class="col-md-6" id="campCPF">
+                                    <label class="text1">CPF</label>
+                                    <input maxlength="11" onkeyup="if (isNaN(this.value)) {this.value = &quot;&quot;}" style="width:100%;" type="text" class="form-control" name="CPF" id="CPF">
+                                </div>
+                                <div class="col-md-6" style="display:none" id="campCNPJ">
+                                    <label class="text1">CNPJ</label>
+                                    <input maxlength="16" onkeyup="if (isNaN(this.value)) {this.value = &quot;&quot;}" style="width:100%;" type="text" class="form-control" name="CNPJ" id="CNPJ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text1">Telefone</label>
+                                    <input maxlength="9" onkeyup="if (isNaN(this.value)) {this.value = &quot;&quot;}" style="width:100%;" type="text" class="form-control" name="Telefone" id="Telefone">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text1">Email</label>
+                                    <input maxlength="100" style="width:100%;" type="text" class="form-control" name="Email" id="Email">
+                                </div>
+                                <div class="col-md-12" style="margin-top: 10px;">
+                                    <button id="entrar" class="btn modal-title text-white-50" onclick="Cadastro()">Cadastrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sucesso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 7030;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #ffffff00; border: 1px solid rgb(0 0 0 / 0%);">
+                <div class="modal-header textoMsgModal" style="border-bottom: 1px solid #dee2e600; color: #20c584; ">
+
+                </div>
+                <lottie-player src="https://assets6.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" width="300" height="300" speed="1" loop autoplay></lottie-player>
+            </div>
+            </div>
+    </div>
+
+    <div class="modal fade" id="erro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 7030;">
+        <div class="modal-dialog" role="document" style="max-width: 100%;">
+            <div style="padding: 15px;margin-bottom: 20px;text-align:center;background-color:#d05d5d;color:white; line-height: 30px; font-size: 14px; font-weight: 300;" class="alert-danger">
+            <b class="textoMsgModal">
+
+            </b></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Carregando" tabindex="-1" aria-labelledby="myModalLabel">
+        <div style="text-align: center;">
+            <div id="painelCarregando">
+                <div id="imagemCarregando"></div>
+            </div>
+            <b>Carregando...</b>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright Teste de Sistema Ecommerce 2022</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="@Convert.ToString("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")"></script>
+    <script src="~/Scripts/_Layout.js"></script>
+    <script src="~/Scripts/Geral.js"></script>
+</body>
+</html>
